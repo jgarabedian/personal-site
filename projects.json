@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Graphing Covid-19",
+    "url": "covid",
+    "headline": "Graphing Covid-19 with Python",
+    "updated": "June 2020",
+    "description": "Shortly after APIs became available, I looked to visualize that information into a web page that would keep me updated with how COVID-19 is affecting the United States.",
+    "img": "corona-hotspot.jpg",
+    "published": true
+  },
+  {
+    "name": "#BLM on Twitter",
+    "url": "blm-twitter",
+    "headline": "Understanding the Sentiment of #BLM on Twitter",
+    "updated": "July 2020",
+    "description": "At the height of protests around the country, I became curious of how different parts of the country were reacting. Using Tweepy and some simple NLP, I was able to do just that.",
+    "img": "blm-protest.jpg",
+    "published": true
+  },
+  {
+    "name": "Github Activity",
+    "url": "github",
+    "headline": "Exploring the Github API to track all my projects",
+    "updated": "November 2020",
+    "description": "Wanting to explore the Github API, I decided to track my projects in a way that made more sense to me.",
+    "img": "github.jpg",
+    "published": true
+  }
+]

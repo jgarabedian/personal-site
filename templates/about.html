@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="section-container content-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-md-6">
+                    <img src="./static/assets/images/profile.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h1 class="h2">Jack Garabedian</h1>
+                    <p>Originally from Maryland, I graduated in 2014 from Linganore high school.
+                        One of the highlights of my time there was filming a video with a contest named
+                        Mr. Linganore, where me and some friends did an optical illusion dance. Fast forward 6 years,
+                        that video because an add on Snapchat! You can check it out
+                        <a href="https://www.youtube.com/watch?v=omzyr0AQNWk&t=3s" target="_blank">here</a>.
+                    </p>
+                    <p>
+                        After that, I graduated from University of Maryland in 2017 with a degree in Information Systems
+                        and Business Analytics. I had a blast here, and living so close to Washington D.C. allowed for
+                        lots of fun. Involved in a few different clubs (including Club Lacrosse, Business Golf Club,
+                        and YoungLife), the highlight here was my summer in New York City. An internship doing data
+                        and database management while living in Harlem was a dream come true. Also got to meet Kenny
+                        "The Jet" Smith!
+                    </p>
+
+<!--                    <p>-->
+<!--                        My first job (starting right at the beginning of 2018) was at Deloitte Consulting. Here I was-->
+<!--                        able to work some super smart people and focus on data analytics. The main product I used was-->
+<!--                        SEMOSS (<a href="https://semoss.org" target="_blank">check it out!</a>) and was even able to-->
+<!--                        get some of my own code put in! I moved into Washington D.C., where I can now give you some-->
+<!--                        great recommendations on where to get a great drink in the city. Even during the great COVID-19-->
+<!--                        pandemic, was still able to have a good time exploring the city during the warm months.-->
+<!--                    </p>-->
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="./contact" title="" class="link-like-text">email</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/jgarabedian" title="" class="link-like-text">linkedin</a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/" title="" class="link-like-text">facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" title="" class="link-like-text">instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" title="" class="link-like-text">twitter</a>
+                        </li>
+                    </ul>
+                    <h5>Check out my virtual resume in Tableau below!</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class='tableauPlaceholder' id='viz1608066745923' style='position: relative'>
+                <noscript>
+                    <a href='#'>
+                        <img alt='Jack Garabedian Virtual Resume'
+                             src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;TableauResume_16040229816600&#47;Dashboard1&#47;1_rss.png'
+                             style='border: none' />
+                    </a>
+                </noscript>
+                <object class='tableauViz'  style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='TableauResume_16040229816600&#47;Dashboard1' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image'
+                           value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;TableauResume_16040229816600&#47;Dashboard1&#47;1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en' />
+                </object>
+            </div>
+            <script type='text/javascript'>
+                var divElement = document.getElementById('viz1608066745923');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='100%';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='1477px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}
