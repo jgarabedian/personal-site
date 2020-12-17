@@ -3,9 +3,9 @@
 
 <div class="section-container">
   <div class="container">
-    {% for proj in projects if proj.published %}
+    {% for proj in projects %}
     <div class="row">
-          <div class="text-center section-container-space">
+          <div class="text-center section-container-spacer">
               <h2 class="with-project-number">
                   <span class="project-number">
                         <!-- Leading 0 if I need it -->
@@ -20,12 +20,12 @@
                     <h3>{{proj.headline}}</h3>
                     <p>Last Updated {{proj.updated}}</p>
                       <p>{{proj.description}}</p>
-                      <p><a href="" class="btn btn-info">Learn more </a></p>
+                      <p><a href="{{ url_for('project_page', proj_name=proj.url) }}" class="btn btn-info">Learn more </a></p>
                   </div>
               </div>
               <div class="col-xs-12 col-md-6">
                   <div class="section-container-spacer">
-                      <img src="{{'./static/assets/images/'+proj.img }}" alt="" class="img-responsive">
+                      <img src="{{'/static/assets/images/'+proj.img }}" alt="" class="img-responsive">
                   </div>
               </div>
           </div>
@@ -71,7 +71,7 @@
         </div>
 
 
-        <img src="./static/assets/images/img-03.jpg" alt="" class="img-responsive">
+        <img src="/static/assets/images/img-03.jpg" alt="" class="img-responsive">
         <p>Menphis city center</p>
 
         <blockquote class="text-center large-spacing">
@@ -81,16 +81,16 @@
         
         <div class="row">
             <div class="col-md-6">
-            <img src="./assets/images/img-02.jpg" class="img-responsive" alt="">
+            <img src="static/assets/images/img-02.jpg" class="img-responsive" alt="">
             <p>Menphis skyline</p>
             </div>
             <div class="col-md-6">
-            <img src="./assets/images/img-01.jpg" class="img-responsive" alt="">
+            <img src="static/assets/images/img-01.jpg" class="img-responsive" alt="">
             <p>Artefact Buildging</p>
             </div>
         </div>
 
-        <img src="./assets/images/img-04.jpg" class="img-responsive" alt="">
+        <img src="static/assets/images/img-04.jpg" class="img-responsive" alt="">
         <p>Menphis skyline</p>
 
       </div>
@@ -102,18 +102,18 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 text-center">
-        <ul class="navbar-nav nav">
-          <li>
-            <a href="" title="" class="project-nav left"><span class="project-number">01</span>Previous</a>
-          </li>
-        </ul>
-        <p class="h5 navbar-text">All projects <i class="fa fa-chevron-down arrow-down" aria-hidden="true"></i></p>
+<!--        <ul class="navbar-nav nav">-->
+<!--          <li>-->
+<!--            <a href="" title="" class="project-nav left"><span class="project-number">01</span>Previous</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+        <p class="h5 navbar-text">All projects </p>
 
-        <ul class="navbar-nav nav navbar-right">
-          <li>
-            <a href="./about" title="" class="project-nav right"><span class="project-number">03</span>Next </a>
-          </li>
-        </ul>
+<!--        <ul class="navbar-nav nav navbar-right">-->
+<!--          <li>-->
+<!--            <a href="./about" title="" class="project-nav right"><span class="project-number">03</span>Next </a>-->
+<!--          </li>-->
+<!--        </ul>-->
       </div>
     </div>
   </div>

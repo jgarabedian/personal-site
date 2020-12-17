@@ -17,6 +17,7 @@
   <title>Jack's Page</title>
 
 <link href="{{ url_for('static', filename='main.3da94fde.css') }}" rel="stylesheet">
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
 <header>
@@ -33,11 +34,10 @@
         <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <ul class="navbar-fullscreen-links">
             <li><a href="{{url_for('index')}}" title="">Home</a></li>
-            <li><a href="./about" title="">About me</a></li>
-            <li><a href="./project" title="">Projects</a></li>
-
-            <li><a href="./contact" title="">Contact me</a></li>
-            <li><a href="./components" title="">Components</a></li>
+            <li><a href="/about" title="">About me</a></li>
+            <li><a href="/project" title="">Projects</a></li>
+            <li><a href="/contact" title="">Contact me</a></li>
+<!--            <li><a href="/components" title="">Components</a></li>-->
         </ul>
 
         <div class="footer-container">
@@ -90,13 +90,13 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", function (event) {
       navbarToggleSidebar();
       closeMenuBeforeGoingToPage();
       navActivePage();
     });
 </script>
-<script type="text/javascript" src="./static/main.4c6e144e.js"></script>
+<script type="text/javascript" src="/static/main.4c6e144e.js"></script>
 
 </body>
 </html>

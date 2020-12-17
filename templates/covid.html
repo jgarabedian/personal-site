@@ -1,0 +1,112 @@
+<h4>Getting started</h4>
+<div class="row">
+    <p>As the global pandemic began to take hold of the country, there were a lot of numbers
+    being thrown out and a lot of people putting together dashboards. As I began to explore what others
+    were putting together, I was also itching to utilize my python skills in some of the newfound free time
+    that I had (taking away a 75 minute commute each way will do wonders). After reading articles on different
+    options for python visualizations, I decided on
+    <b><a href="https://plotly.com/dash/" target="_blank">Plotly Dash</a></b> because of the great reviews as
+    well as the thorough documentation I was founding. Already being familiar with Flask, this worked well with
+    that existing knowledge.
+    </p>
+    <p>For the data, I knew I wanted an API so it could be as close to real-time as possible and once
+    finished with the project, I could continue to check it without updating any code. After exploring some
+    different options, I decided to go with <u><a href="https://covidtracking.com/" target="_blank">The Covid
+        Tracking Project</a></u>. I read up on their data validation techniques, and it was a relatively simple API
+    to use after scanning through the documentation, so I settled on that API. Highly recommend!</p>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <p>It seems to be pretty standard that when working with APIs in Python, the <i>requests</i> library
+        is a popular favorite. Having used this previously, I decided to write a quick function that would take an
+            endpoint and return a pandas dataframe. Pandas has a lot of built in functions to
+        manipulate the data as needed, which made it an easy choice to use. The return of this function
+        sorts the information by date, which I knew would be useful when plotting historical data.</p>
+        <p>Now that I had the data from the API in a pandas frame, next up was to actually visualize
+        the information. From ingesting so many different numbers and graphs in the past few weeks, I
+        knew exactly what I graphs I was planning on using - a classic line and column chart. So with that
+        in mind, I went onto the plotly dash documentation for examples I could use. Shameless plug - the
+        documentation is fantastic and might even be something I try to use in Javascript and R in the future.
+        </p>
+    </div>
+    <div class="col-sm-12 col-md-6">
+<pre><code class="python">import request
+import pandas as pd
+def get_data(endpoint: str) -> pd.DataFrame:
+    response = requests.get(endpoint)
+    df = pd.DataFrame(response.json())
+    return df.sort_values(by=['date'])
+def get_new_metrics(df: pd.DataFrame, measure: str) -> list:
+    new_df = df[measure].diff(periods=1)
+    return new_df.tolist()
+def moving_average(col_list: list) -> list:
+    week = 7
+    col_series = pd.Series(col_list)
+    windows = col_series.rolling(week)
+    return windows.mean().tolist()</code></pre>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p>First, I had to initiate the class with dash. After examining multiple examples, I concluded
+        that I would need to have multiple traces on my figure: 2 lines for the moving average and 2
+        columns for the new counts. I've included an example of what this looks like, as well as the code
+        to obtain the moving averages you will see. After repeating the same steps for deaths, I was able
+        produce the image below:</p>
+        <img class="img-responsive" alt="Covid-19 Dashboard"
+             src="/static/assets/images/covid-dashboard.png">
+        <p>Screenshot of Covid-19 US Dashboard</p>
+    </div>
+</div>
+<hr>
+<h4>Making the dashboard responsive</h4>
+<div class="row">
+    <p>Now that I have a simple dashboard up and running, I needed to make it responsive if I was
+    going to visualize the individual states. This is when I discovered "callbacks". You can read
+    more about them <a href="https://dash.plotly.com/basic-callbacks" target="_blank"><u>here</u></a>,
+    but it is essentially a way for for Dash to take inputs and then automatically call functions
+    whenever there is a change. The decorator needed from this has 2 main parts: a list of inputs,
+    and a list of outputs. Essentially, the inputs hold the "triggers" for the function call, and
+    the "output" is where whatever is returned from the function will go in our Dash application.
+    Below is a simplified version of this for our states.</p>
+    <pre><code>@app.callback([Output('states-output', 'figure')],[Input('states-input', 'value')])
+def update_state(value: str):
+    df = stats.get_states_hist(value)
+    fig3 = go.Figure()
+    fig3.add_trace(go.Bar(
+        x=df['date'],
+        y=new_positive,
+        name='New Cases',
+        marker=dict(
+            color='rgb(2, 117, 216)'
+        )
+    ))
+    return fig3</code></pre>
+    <p>To explain what's happening here, our output is actually an HTML element with an
+    id of 'states-output'. When our function <code>def update_state(value)</code> returns
+    a Dash figure, that is where it gets inserted. In each output, the type of object to be found has
+    to be defined - in our case a Dash figure. The input is a dropdown in the HTML, where once again
+    the id is 'states-input'. This function builds things out a bit more, but this is the basic sense
+    of how the interactivity works.</p>
+</div>
+<!--    <div class="col-sm-12 col-md-6">-->
+<!--<pre><code class="python">fig1 = go.Figure()-->
+<!--new_pos = stats.get_new_metrics(df, 'positive')-->
+<!--fig1.add_trace(go.Bar(-->
+<!--    x=stats.format_dates(df['date'].tolist()),-->
+<!--    y=new_pos,-->
+<!--    name='New Cases',-->
+<!--    marker=dict(color='rgb(2, 117, 216)')-->
+<!--))-->
+<!--fig1.add_trace(go.Scatter(-->
+<!--    x=stats.format_dates(df['date'].tolist()),-->
+<!--    y=moving_average(newPos),-->
+<!--    name='7 Day Pos Avg',-->
+<!--    mode='lines+markers',-->
+<!--    line=dict(color='rgb(240, 173, 78)')-->
+<!--))</code></pre>-->
+<!--    </div>-->
+<!--</div>-->
+<script type='text/javascript'>
+hljs.initHighlightingOnLoad();
+</script>

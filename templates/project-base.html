@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet"
+      href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/atom-one-light.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="section-container">
+    <div class="container">
+        <div class="row section-container-spacer">
+            <a href="/project">
+                <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                All Projects
+            </a>
+        </div>
+    <div class="row">
+        <div class="text-center section-container-space">
+              <h2 class="with-project-number">
+                  <span class="project-number">
+                        <!-- Leading 0 if I need it -->
+                      {{index[1] if index[1]|string|length > 1 else '0' + index[1]|string}}
+                  </span>
+                  {{project.name}}
+              </h2>
+          </div>
+        <div class="text-center section-container-space">
+            <h2>
+                {{ project.headline }}
+            </h2>
+            <small>
+                Last updated: {{ project.updated }}
+            </small>
+        </div>
+        <div class="section-container-spacer">
+            <img src="{{'/static/assets/images/' + project.img }}" alt="" class="img-responsive">
+        </div>
+    </div>
+    <div class="section-container-spacer">
+        {% include "%s.html" % project.url %}
+    </div>
+    {% if project.demo %}
+    <div class="section-container-spacer">
+        <a href="{{project.demo}}" target="_blank">
+            <h3 class="text-secondary">Check it out further <i class="fa fa-external-link" aria-hidden="true"></i></h3>
+
+        </a>
+    </div>
+    {% endif %}
+</div>
+</div>
+<div class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <ul class="navbar-nav nav">
+          <li>
+            <a href="{{ url_for('project_page', proj_name=last.url) }}" title="" class="project-nav left"><span class="project-number">
+                {{index[0]+1 if index[0]|string|length > 1 else '0' + index[0]|string}}</span>{{last.name}}
+            </a>
+          </li>
+        </ul>
+        <p class="h5 navbar-text">{{project.name}}
+<!--            <i class="fa fa-chevron-down arrow-down" aria-hidden="true"></i>-->
+        </p>
+
+        <ul class="navbar-nav nav navbar-right">
+          <li>
+            <a href="{{ url_for('project_page', proj_name=next.url) }}" title="" class="project-nav right">
+                <span class="project-number">
+                    {{index[2]+1 if index[2]|string|length > 1 else '0' + index[2]|string}}
+                </span>{{next.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
